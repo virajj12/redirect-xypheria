@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xypheria 2026 - Connect</title>
-    <!-- Favicon -->
     <link rel="icon" href="Xypheria black.png" type="image/png">
-    <!-- Font Awesome for Social Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -350,7 +348,6 @@
             <div class="social-card">
                 <h2>CONTACT COORDINATORS</h2>
                 <div class="contact-grid">
-                    <!-- Student Coordinator 1 -->
                     <div class="contact-person">
                         <span class="contact-role">Student Coordinator</span>
                         <span class="contact-name">Vinith M</span>
@@ -360,7 +357,6 @@
                             <a href="tel:+917338265245" class="contact-badge"><i class="fa-solid fa-phone"></i> Call</a>
                         </div>
                     </div>
-                    <!-- Student Coordinator 2 -->
                     <div class="contact-person">
                         <span class="contact-role">Student Coordinator</span>
                         <span class="contact-name">Pushkar Singh</span>
@@ -380,6 +376,58 @@
         <p>Copyright &copy; 2026 All rights reserved</p>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // REPLACE THIS URL WITH YOUR DEPLOYED GOOGLE APPS SCRIPT WEB APP URL
+            const GOOGLE_SHEETS_API_URL = 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE';
+
+            // Function to send data to Google Sheets
+            function sendToGoogleSheets(data) {
+                if(GOOGLE_SHEETS_API_URL === 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE') return; // Prevent errors if URL isn't set
+
+                fetch(GOOGLE_SHEETS_API_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Important: This bypasses CORS preflight blocks from the browser
+                    headers: {
+                        'Content-Type': 'text/plain', // Using text/plain is safer for bypassing CORS issues in Apps Script
+                    },
+                    body: JSON.stringify(data)
+                }).catch(error => console.error('Tracking Error:', error));
+            }
+
+            // 1. Generate an anonymous ID to track unique visitors per session
+            let anonUserId = localStorage.getItem('xypheria_visitor_id');
+            if (!anonUserId) {
+                anonUserId = crypto.randomUUID();
+                localStorage.setItem('xypheria_visitor_id', anonUserId);
+            }
+
+            // 2. Track when the page is accessed
+            sendToGoogleSheets({
+                userId: anonUserId,
+                event: 'page_view',
+                buttonName: '',
+                destination: window.location.href
+            });
+
+            // 3. Track specific button clicks
+            const buttons = document.querySelectorAll('.social-button, .contact-badge');
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const buttonText = button.innerText.replace(/\n/g, ' ').trim();
+                    const targetUrl = button.getAttribute('href');
+
+                    sendToGoogleSheets({
+                        userId: anonUserId,
+                        event: 'button_click',
+                        buttonName: buttonText,
+                        destination: targetUrl
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
