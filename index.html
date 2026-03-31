@@ -379,11 +379,11 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // REPLACE THIS URL WITH YOUR DEPLOYED GOOGLE APPS SCRIPT WEB APP URL
-            const GOOGLE_SHEETS_API_URL = 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE';
+            const GOOGLE_SHEETS_API_URL = 'https://script.google.com/macros/s/AKfycbxCD4JfkiO5HOcv_B1wuUhQS-wDSP-suVfLHbCdeZVAbRfBATizM1rIgu5Jun4wz3UF/exec';
 
             // Function to send data to Google Sheets
             function sendToGoogleSheets(data) {
-                if(GOOGLE_SHEETS_API_URL === 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE') return; // Prevent errors if URL isn't set
+                if(GOOGLE_SHEETS_API_URL === 'https://script.google.com/macros/s/AKfycbxCD4JfkiO5HOcv_B1wuUhQS-wDSP-suVfLHbCdeZVAbRfBATizM1rIgu5Jun4wz3UF/exec') return; // Prevent errors if URL isn't set
 
                 fetch(GOOGLE_SHEETS_API_URL, {
                     method: 'POST',
