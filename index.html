@@ -312,25 +312,63 @@
             <div class="large-logo">
                 <img src="Xypheria black.png" alt="Center Logo" />
             </div>
-            <h1>XYPHERIA</h1>
-            <p class="tagline">BUILD • HACK • INNOVATE</p>
+            <h1>Xypheria | Innorve</h1>
+            <p class="tagline">Visit our sponsor, Innorve</p>
         </section>
 
         <section class="social-links-container">
             <div class="social-card">
-                <h2>WEBSITE & REGISTRATION</h2>
+                <h2>WEBSITE</h2>
+                <div class="social-grid">
+                    <a href="https://innorve.ai/?utm_source=xypheria_promo" target="_blank" rel="noopener noreferrer"
+                        class="social-button">
+                        <div class="text-group">
+                            <span class="platform"><i class="fa-solid fa-globe"></i> INNORVE.AI</span>
+                            <span class="cta">VISIT NOW</span>
+                        </div>
+                    </a>
+                </div>
                 <div class="social-grid">
                     <a href="https://xypheria.in" target="_blank" rel="noopener noreferrer"
                         class="social-button">
                         <div class="text-group">
                             <span class="platform"><i class="fa-solid fa-globe"></i> XYPHERIA.IN</span>
-                            <span class="cta">REGISTER NOW</span>
+                            <span class="cta">VISIT NOW</span>
                         </div>
                     </a>
                 </div>
             </div>
         </section>
 
+        <section class="social-links-container" style="margin-top: 0;">
+            <div class="social-card">
+                <h2>EXPLORE & CONNECT WITH INNORVE</h2>
+                <div class="social-grid">
+                    <a href="https://www.instagram.com/innorve_ai/" target="_blank" rel="noopener noreferrer"
+                        class="social-button instagram">
+                        <div class="text-group">
+                            <span class="platform"><i class="fa-brands fa-instagram"></i> INSTAGRAM</span>
+                            <span class="cta">FOLLOW US</span>
+                        </div>
+                    </a>
+                    <a href="https://www.linkedin.com/company/innorve/" target="_blank" rel="noopener noreferrer"
+                        class="social-button linkedin">
+                        <div class="text-group">
+                            <span class="platform"><i class="fa-brands fa-linkedin"></i> LINKEDIN</span>
+                            <span class="cta">CONNECT WITH US</span>
+                        </div>
+                    </a>
+                    <!-- <a href="https://x.com/xypheria_cse" target="_blank" rel="noopener noreferrer"
+                        class="social-button x-twitter">
+                        <div class="text-group">
+                            <span class="platform"><i class="fa-brands fa-x-twitter"></i> X (TWITTER)</span>
+                            <span class="cta">STAY UPDATED</span>
+                        </div>
+                    </a> -->
+                </div>
+            </div>
+        </section>
+        
         <section class="social-links-container" style="margin-top: 0;">
             <div class="social-card">
                 <h2>EXPLORE & CONNECT WITH XYPHERIA</h2>
@@ -360,54 +398,20 @@
             </div>
         </section>
 
-        <section class="social-links-container" style="margin-top: 0;">
-            <div class="social-card">
-                <h2>CONTACT COORDINATORS</h2>
-                <div class="contact-grid">
-                    <div class="contact-person">
-                        <span class="contact-role">Student Coordinator</span>
-                        <span class="contact-name">Vinith M</span>
-                        <div class="contact-actions">
-                            <a href="mailto:vinithmohan2006@gmail.com" class="contact-badge"><i
-                                    class="fa-solid fa-envelope"></i> Email</a>
-                            <a href="tel:+917338265245" class="contact-badge"><i class="fa-solid fa-phone"></i> Call</a>
-                        </div>
-                    </div>
-                    <div class="contact-person">
-                        <span class="contact-role">Student Coordinator</span>
-                        <span class="contact-name">Pushkar Singh</span>
-                        <div class="contact-actions">
-                            <a href="mailto:baghelpushkarsingh@gmail.com" class="contact-badge"><i
-                                    class="fa-solid fa-envelope"></i> Email</a>
-                            <a href="tel:+918793746838" class="contact-badge"><i class="fa-solid fa-phone"></i> Call</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <footer>
-        <p>Organized by Dept. of CSE & C-MANIAX</p>
-        <p>Copyright &copy; 2026 All rights reserved</p>
-    </footer>
-
     <script>
-        console.log("1. Analytics Script Loaded");
-
-        // REPLACE THIS URL WITH YOUR DEPLOYED GOOGLE APPS SCRIPT WEB APP URL
+        
         const GOOGLE_SHEETS_API_URL = 'https://script.google.com/macros/s/AKfycbxCD4JfkiO5HOcv_B1wuUhQS-wDSP-suVfLHbCdeZVAbRfBATizM1rIgu5Jun4wz3UF/exec';
 
-        if (GOOGLE_SHEETS_API_URL === 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE') {
-            console.error("ERROR: The Google URL is still the placeholder!");
-        } else {
-            console.log("2. Google URL is set correctly.");
-        }
+        // if (GOOGLE_SHEETS_API_URL === 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE') {
+        //     console.error("ERROR: The Google URL is still the placeholder!");
+        // } else {
+        //     console.log("2. Google URL is set correctly.");
+        // }
 
         function sendToGoogleSheets(data) {
             if (GOOGLE_SHEETS_API_URL === 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE') return;
-
-            console.log("4. Attempting to send data to Google: ", data.event);
 
             fetch(GOOGLE_SHEETS_API_URL, {
                 method: 'POST',
@@ -417,18 +421,16 @@
                 },
                 body: JSON.stringify(data)
             }).then(() => {
-                console.log("5. Fetch request successfully fired for: ", data.event);
+                console.log("Fetch request successfully fired for: ", data.event);
             }).catch(error => console.error('Tracking Fetch Error:', error));
         }
 
-        // Generate or retrieve visitor ID
         let anonUserId = localStorage.getItem('xypheria_visitor_id');
         if (!anonUserId) {
             anonUserId = crypto.randomUUID();
             localStorage.setItem('xypheria_visitor_id', anonUserId);
         }
 
-        // Track page view immediately (No waiting for DOMContentLoaded)
         console.log("3. Firing Page View event...");
         sendToGoogleSheets({
             userId: anonUserId,
@@ -437,7 +439,6 @@
             destination: window.location.href
         });
 
-        // Attach click listeners to buttons
         const buttons = document.querySelectorAll('.social-button, .contact-badge');
         console.log("6. Found " + buttons.length + " trackable buttons on the page.");
 
